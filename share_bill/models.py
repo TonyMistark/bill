@@ -12,7 +12,7 @@ class Bill(models.Model):
     create_time = models.DateTimeField('创建时间', auto_now_add=True)
     update_time = models.DateTimeField('更新时间', auto_now=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
     class Meta:
