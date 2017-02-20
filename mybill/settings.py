@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import os.path as osp
+from os.path import dirname
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,6 +30,14 @@ DEBUG = True
 ALLOWED_HOSTS = ["bill.ablog.top", ]
 
 
+ADMINS = (
+    # ('Your Name', 'your_email@example.com'),
+)
+
+PROJECT_ROOT = osp.abspath(dirname(__file__))
+
+MANAGERS = ADMINS
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rest_framework",
     "share_bill",
+    "xadmin",
 ]
 
 MIDDLEWARE = [
