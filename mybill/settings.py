@@ -9,11 +9,15 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
+import sys
 import os
 import os.path as osp
 from os.path import dirname
 
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+gettext = lambda s: s
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -47,9 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "xadmin",
+    'crispy_forms',
     "rest_framework",
     "share_bill",
-    "xadmin",
 ]
 
 MIDDLEWARE = [
@@ -87,17 +92,16 @@ WSGI_APPLICATION = 'mybill.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'bill',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
+        'ENGINE': 'django.db.backends.mysql',   # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'bill',                         # Or path to database file if using sqlite3.
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': '127.0.0.1',                 # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '3306',                      # Set to empty string for default.
     }
 }
@@ -124,8 +128,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
-LANGUAGE_CODE = 'zh-hans'
 
+# LANGUAGE_CODE = 'zh-hans'
+import django
+if django.VERSION[1] > 8:
+    LANGUAGE_CODE = 'zh-Hans'
+else:
+    LANGUAGE_CODE = 'zh_CN'
+
+LANGUAGES = (
+#    ('en', gettext('English')),
+    ('zh_CN', gettext('Chinese')),
+)
 TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True

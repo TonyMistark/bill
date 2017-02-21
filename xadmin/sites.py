@@ -253,7 +253,6 @@ class AdminSite(object):
         """
         如果返回为 ``True`` 则说明 ``request.user`` 至少能够访问当前xadmin网站。否则无法访问xadmin的任何页面。
         """
-        print("request----------------\n", dir(request))
         return request.user.is_active and request.user.is_staff
 
     def check_dependencies(self):
