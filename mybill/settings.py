@@ -31,7 +31,7 @@ SECRET_KEY = 'nq$3oqi%n8oc+g!1h-k)n14evl@$l!*fg88$a!#b$e_*=j-dlp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["bill.ablog.top", ]
+ALLOWED_HOSTS = ["bill.ablog.top", "localhost", "0.0.0.0"]
 
 
 ADMINS = (
@@ -41,6 +41,19 @@ ADMINS = (
 PROJECT_ROOT = osp.abspath(dirname(__file__))
 
 MANAGERS = ADMINS
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+
+)
 
 # Application definition
 
