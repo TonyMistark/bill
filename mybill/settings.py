@@ -29,7 +29,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'nq$3oqi%n8oc+g!1h-k)n14evl@$l!*fg88$a!#b$e_*=j-dlp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["bill.ablog.top", "localhost", "0.0.0.0"]
 
@@ -162,6 +162,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_ROOT = 'static/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
